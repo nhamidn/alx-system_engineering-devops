@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script that SIGKILL a process
+
+kill -SIGKILL "$(pgrep -f highlander)"
