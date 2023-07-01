@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Bash script that display the PID, along with the process name
+
+script_pid=$$
+pids=$(pgrep -f bash)
+for pid in $pids; do
+  name=$(ps -o comm= -p "$pid")
+  echo "$pid $name"
+done
+
+echo "$script_pid $(basename "$0")"
