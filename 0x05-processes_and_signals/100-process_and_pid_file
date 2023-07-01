@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Bash script 
+
+echo $$ >> /var/run/myscript.pid
+
+function delete() {
+    rm -rf /var/run/myscript.pid
+    exit 0
+}
+
+trap 'echo "I hate the kill command"; delete' SIGTERM
+trap 'echo "Y U no love me?!"; delete' SIGINT
+
+while true; do
+    echo "To infinity and beyond"
+done
