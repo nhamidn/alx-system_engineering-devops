@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 def match_school(text)
-  matches = text.scan(/h[b]?tn/)
+  matches = text.scan(/hbt+n/)
   if matches.empty?
     puts ""
   else
