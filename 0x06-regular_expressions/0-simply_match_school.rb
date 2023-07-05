@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 
 def match_school(text)
-  if text && text.match(/School/)
-    puts "School"
-  else
+  matches = text.scan(/School/)
+  if matches.empty?
     puts ""
+  else
+    puts matches.join
   end
 end
 
