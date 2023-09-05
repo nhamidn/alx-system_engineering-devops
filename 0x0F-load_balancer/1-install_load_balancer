@@ -2,10 +2,18 @@
 #Script that install and configure Haproxy LoadBalancer
 apt-get update
 apt-get -y install haproxy
+
 echo "ENABLED=1" >> /etc/default/haproxy
-echo -e "\nfrontend www\n\tbind *:80" >> /etc/haproxy/haproxy.cfg
-echo -e "\tdefault_backend servers" >> /etc/haproxy/haproxy.cfg
-echo -e "\nbackend servers\n\tbalance roundrobin" >> /etc/haproxy/haproxy.cfg
-echo -e "\tserver web1 54.162.77.34:80 check" >> /etc/haproxy/haproxy.cfg
-echo -e "\tserver web2 100.25.194.211:80 check" >> /etc/haproxy/haproxy.cfg
+
+cat <<EOL >> /etc/haproxy/haproxy.cfg
+frontend www
+    bind *:80
+    default_backend servers
+
+backend servers
+    balance roundrobin
+    server web1 54.162.77.34:80 check
+    server web2 100.25.194.211:80 check
+EOL
+
 service haproxy restart
