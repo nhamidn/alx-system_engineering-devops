@@ -6,6 +6,7 @@ apt-get install -y nginx
 service nginx start
 echo "Hello World!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
+# shellcheck disable=SC2154
 echo "server {
     listen 80;
     listen [::]:80 default_server;
@@ -19,12 +20,15 @@ echo "server {
         root /var/www/html;
         internal;
     }
+    # shellcheck disable=SC2154
     server_name $hostname;
 
     location / {
         # First attempt to serve request as file, then
         # as directory, then fall back to displaying a 404.
+        # shellcheck disable=SC2154
         try_files $uri $uri/ =404;
+        # shellcheck disable=SC2154
         add_header  X-Served-By  $server_name;
     }
 }" > /etc/nginx/sites-available/default
