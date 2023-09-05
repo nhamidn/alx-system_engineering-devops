@@ -1,29 +1,8 @@
 #Configure nginx header response with puppet
-exec { 'update':
-  command  => 'sudo apt-get update',
-  provider => shell,
-}
-
-package {'nginx':
-  ensure => present,
-}
-
-file_line { 'header line':
-  ensure => present,
-  path   => '/etc/nginx/sites-available/default',
-  line   => "server {\n    add_header X-Served-By $hostname;",
-  match  => '^\s*server {',
-}
-
-file_line { 'header line':
-  ensure => present,
-  path   => '/etc/nginx/sites-available/default',
-  line   => "	location / {
-  add_header X-Served-By $hostname;",
-  match  => '^\tlocation / {',
-}
-
-exec { 'restart service':
-  command  => 'sudo service nginx restart',
+exec { 'http header':
+  command  => 'sudo apt-get update -y;
+	sudo apt-get install nginx -y;
+	sudo sed -i '/server {/a \ \ \ \ add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-available/default
+	sudo service nginx restart',
   provider => shell,
 }
