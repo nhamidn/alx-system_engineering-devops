@@ -12,8 +12,8 @@ frontend www
 
 backend servers
     balance roundrobin
-    server web1 54.162.77.34:80 check
-    server web2 100.25.194.211:80 check
+    server web-01 54.162.77.34:80 check
+    server web-02 100.25.194.211:80 check
 EOL
 
 service haproxy restart
