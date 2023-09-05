@@ -12,7 +12,7 @@ echo "server {
     listen [::]:80 default_server;
     root   /var/www/html;
     index  index.html;
-    add_header X-Served-By $hostname;
+    add_header X-Served-By $HOSTNAME;
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
@@ -21,7 +21,7 @@ echo "server {
         root /var/www/html;
         internal;
     }
-    server_name $hostname;
+    server_name $HOSTNAME;
 
     location / {
         # First attempt to serve request as file, then
