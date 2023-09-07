@@ -9,8 +9,8 @@ function display_info {
     fi
 
     for sub in $subdomain; do
-        result=$(dig web-02.moroccantechloom.tech | grep -A1 'ANSWER SECTION:' | sed -n '2p' | awk '{print $NF}')
-	record=$(dig web-02.moroccantechloom.tech | grep -A1 'ANSWER SECTION:' | sed -n '2p' | awk '{print $4}')
+        result=$(dig $sub.$domain | grep -A1 'ANSWER SECTION:' | awk 'NR==2' | awk '{print $NF}')
+	record=$(dig $sub.$domain | grep -A1 'ANSWER SECTION:' | awk 'NR==2' | awk '{print $4}')
         echo "The subdomain $sub is a $record record and points to $result"
     done
 }
