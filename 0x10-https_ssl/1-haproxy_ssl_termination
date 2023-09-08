@@ -46,7 +46,7 @@ frontend www
 	default_backend servers
 
 frontend www-https
-	bind haproxy_www_public_IP:443 ssl crt /etc/haproxy/certs/www.moroccantechloom.tech.pem
+	bind *:443 ssl crt /etc/haproxy/certs/www.moroccantechloom.tech.pem
 	reqadd X-Forwarded-Proto:\ https
 	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
 	use_backend letsencrypt-backend if letsencrypt-acl
