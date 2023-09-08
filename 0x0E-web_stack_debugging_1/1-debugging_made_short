@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Short Script version of ex 0
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
+sudo pkill -o nginx
