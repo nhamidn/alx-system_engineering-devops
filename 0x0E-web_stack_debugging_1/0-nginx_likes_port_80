@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 #Script that fixes nginx problem
-sudo sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
-sudo service nginx restart
+sed -i 's/ipv6only=on//' /etc/nginx/sites-enabled/default
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+service nginx restart
