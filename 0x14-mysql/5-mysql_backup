@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-script that# backup databases
+#script that# backup databases
 
 day=$(date +"%d")
 month=$(date +"%m")
